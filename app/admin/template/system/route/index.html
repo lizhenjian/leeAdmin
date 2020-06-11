@@ -1,0 +1,133 @@
+{include file="common/head"}
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">关键词</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="keywords" autocomplete="off" class="layui-input" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button type="submit" class="layui-btn layui-btn-primary" lay-submit lay-filter="leeform"><i
+                                    class="layui-icon"></i> 搜 索
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+
+        <script type="text/html" id="status">
+            <i class="layui-icon {{#  if(d.status == 1){ }}layui-icon-ok{{#  } else { }}layui-icon-close{{#  } }}"></i>
+        </script>
+        <script type="text/html" id="href">
+            <a href="/index.php/{{d.module}}/{{d.url}}" target="_blank"
+               style="color:#01AAED;">/{{d.module}}/{{d.url}}</a>
+        </script>
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" lay-event="add">添加路由</button>
+                <span class="layui-badge-rim">注意：如果应用(模块)单独绑定了域名,在访问设置后的链接时无需加应用名</span>
+            </div>
+        </script>
+        <script type="text/html" id="barDemo">
+            <a class="layui-icon layui-icon-edit" lay-event="edit" href="javascript:;"></a>
+            <a class="layui-icon layui-icon-delete" lay-event="del" href="javascript:;"></a>
+        </script>
+    </div>
+</div>
+
+{include file="common/foot"}
+
+<script>
+    layui.config({
+        base: '__ADMIN__/module/'
+    }).use(['table', 'lee', 'form'], function () {
+        var table = layui.table
+            , lee = layui.lee
+            , $ = layui.$
+            , form = layui.form;
+
+        var tableIns = table.render({
+            elem: '#test'
+            , toolbar: '#toolbarDemo'
+            , title: '用户数据表'
+            , url: "{:url('admin/system.route/index')}" //数据接口
+            , page: true //开启分页
+            , limit: 15
+            , cols: [[ //表头
+                {field: 'id', title: 'ID', sort: true, fixed: 'left', align: 'center', width: 80}
+                , {field: 'module', title: '应用(模块)', align: 'center'}
+                , {field: 'full_url', title: '原始链接', align: 'center'}
+                , {field: 'url', title: '路由', align: 'center',}
+                , {field: '', title: '访问地址：应用(模块)名+路由', align: 'center', toolbar: '#href'}
+                , {field: 'status', title: '状态', toolbar: '#status', align: 'center', width: 100}
+                , {field: 'right', toolbar: '#barDemo', width: 150, align: 'center'}
+            ]]
+            , size: "sm"
+        });
+
+        //监听事件
+        table.on('toolbar(test)', function (obj) {
+            switch (obj.event) {
+                case 'add':
+                    lee.open({
+                        href: "{:url('admin/system.route/add')}",
+                        title: "添加路由",
+                        end: function () {
+                            tableIns.reload();
+                        }
+                    })
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                lee.confirm('真的删除么', function (index) {
+                    $.ajax({
+                        url: "{:url('/admin/system.route/delete')}",
+                        data: {id: data.id, module: data.module},
+                        success: function (res) {
+                            layer.msg(res.msg);
+                            if (res.code == 200) {
+                                obj.del();
+                            }
+                        }
+                    })
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                lee.open({
+                    href: "{:url('admin/system.route/edit')}?id=" + data.id,
+                    title: '修改路由' + data.id,
+                    end: function () {
+                        tableIns.reload();
+                    }
+                })
+            }
+        });
+
+        //监听搜索提交
+        form.on('submit(leeform)', function (data) {
+            console.log(data.field.keywords)
+            if (data.field.keywords) {
+                tableIns.reload({where: {keywords: data.field.keywords}});
+                lee.bundledTab();
+            }
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>

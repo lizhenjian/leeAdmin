@@ -45,6 +45,15 @@ leeAdmin遵循Apache2开源协议发布，并提供免费使用。
 
 版权所有Copyright © 2006-2020 by leeAdmin (http://blog.leelink.top)
 
-##鸣谢
-vaeThink
-layuimini
+##感谢（排名不分先后）
+ThinkPHP：https://github.com/top-think/framework
+
+Layuimini：https://github.com/zhongshaofa/layuimini
+
+Layui：https://github.com/sentsin/layui
+
+Jquery：https://github.com/jquery/jquery
+
+vaeThink: https://github.com/tingyuu/vaeThink2
+
+Echarts：https://github.com/apache/incubator-echarts

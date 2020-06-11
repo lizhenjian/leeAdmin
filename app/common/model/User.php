@@ -14,7 +14,7 @@ class User extends Base
         2 => '女',
     ];
 
-    public function getAttrSex($value)
+    public function getSexAttr($value)
     {
         return self::$sexData[$value];
     }

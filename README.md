@@ -1,6 +1,6 @@
 leeAdmin
 ===============
-
+演示地址：http://leeadmin.leelink.top/admin/
 > 运行环境要求PHP7.1+。
 
 ## 主要新特性

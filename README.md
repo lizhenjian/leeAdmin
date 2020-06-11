@@ -25,7 +25,7 @@ leeAdmin
 
 2.运行目录指向public；
 
-3.导入leeadmin_leelink.sql (加群获取 347255313 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=4a1d4f3e1d2c9a0cb344f4a86a5673bd4418c1eda77f7e4cb1ba50eee9c96135"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="leeAdmin框架交流群" title="leeAdmin框架交流群"></a>)。
+3.导入leeadmin_leelink.sql (加群获取 347255313 )。
 
 4.根目录下执行 composer install
 ~~~

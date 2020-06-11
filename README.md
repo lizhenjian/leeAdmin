@@ -25,7 +25,7 @@ leeAdmin
 
 2.运行目录指向public；
 
-3.导入leeadmin_leelink.sql(加群获取 347255313)。
+3.导入leeadmin_leelink.sql (加群获取 347255313)。
 
 4.根目录下执行 composer install
 ~~~

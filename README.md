@@ -17,7 +17,8 @@ leeAdmin
 * 微信开发实例
 * 接口基于JWT的access_token无状态登录
 * 开箱即用易扩展
-
+##QQ群
+347255313
 ## 安装
 
 ~~~
@@ -25,7 +26,7 @@ leeAdmin
 
 2.运行目录指向public；
 
-3.导入leeadmin_leelink.sql (加群获取 347255313 )。
+3.导入leeadmin.sql (项目根目录)。
 
 4.根目录下执行 composer install
 ~~~

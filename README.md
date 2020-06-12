@@ -18,7 +18,7 @@ leeAdmin
 * 接口基于JWT的access_token无状态登录
 * 开箱即用易扩展
 
-##QQ群
+## QQ群
 347255313
 
 ## 安装

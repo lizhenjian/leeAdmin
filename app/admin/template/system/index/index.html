@@ -138,8 +138,8 @@
               miniTongji = layui.miniTongji;
 
       var options = {
-         iniUrl: "/index.php/admin/system.index/getAdminMenuList",    // 初始化接口
-         clearUrl: "/index.php/admin/system.index/cacheClear", // 缓存清理接口
+         iniUrl: "{:url('/admin/system.index/getAdminMenuList')}",    // 初始化接口
+         clearUrl: "{:url('/admin/system.index/cacheClear')}", // 缓存清理接口
          urlHashLocation: true,      // 是否打开hash定位
          bgColorDefault: false,      // 主题默认配置
          multiModule: true,          // 是否开启多模块
@@ -165,7 +165,7 @@
             url:"{:url('/admin/system.index/adminLogout')}",
             success:function(res){
                layer.msg('退出登录成功', function () {
-                  window.location = '/index.php/admin/system.publicer/adminLogin';
+                  window.location = "{:url('/admin/system.publicer/adminLogin')}";
                });
             }
          })

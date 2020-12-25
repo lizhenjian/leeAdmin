@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : leelink-leeadmin
+ Source Server         : dnmp-mysql
  Source Server Type    : MySQL
  Source Server Version : 50728
- Source Host           : t.leelink.top:3306
- Source Schema         : leeadmin_leelink
+ Source Host           : 127.0.0.1:3306
+ Source Schema         : leeadmin
 
  Target Server Type    : MySQL
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 11/06/2020 11:27:27
+ Date: 25/12/2020 16:16:51
 */
 
 SET NAMES utf8mb4;
@@ -42,8 +42,8 @@ CREATE TABLE `lee_admin`  (
 -- ----------------------------
 -- Records of lee_admin
 -- ----------------------------
-INSERT INTO `lee_admin` VALUES (1, 'admin', 'd36ad0d7d762dcee1e1867566f168e1a', '61rv3iLXpHouZAdk0RIY', 1, 1588728578, 1589273418, 1591843794, '127.0.0.1', 'Admin', NULL, 'http://ky-1255304035.cos.ap-beijing.myqcloud.com/storage/20200512/67117c45f31240798232138827c31290.jpg', '');
-INSERT INTO `lee_admin` VALUES (2, 'test', 'f221e3c5efbc5da57e7105e6946f22be', 'duqVvx6Ze4PHAJ8konW0', 1, 1591775293, 1591775401, 0, '', 'test', '', '/storage/topic/20200610\\cfefb2d076cea3c11cb0a30ae8b779de.jpg', '1');
+INSERT INTO `lee_admin` VALUES (1, 'admin', 'd36ad0d7d762dcee1e1867566f168e1a', '61rv3iLXpHouZAdk0RIY', 1, 1588728578, 1589273418, 1608882423, '172.20.0.1', 'Admin', NULL, 'http://ky-1255304035.cos.ap-beijing.myqcloud.com/storage/20200512/67117c45f31240798232138827c31290.jpg', '');
+INSERT INTO `lee_admin` VALUES (2, 'test', '6bf79bc01d73bb3dba758cbadd18c657', 'ZksDMAg2pWJ5QrqTFaC0', 1, 1591775293, 1608882248, 1608882455, '172.20.0.1', 'test', '', '/storage/topic/20200610\\cfefb2d076cea3c11cb0a30ae8b779de.jpg', '1');
 
 -- ----------------------------
 -- Table structure for lee_admin_group
@@ -64,7 +64,7 @@ CREATE TABLE `lee_admin_group`  (
 -- ----------------------------
 -- Records of lee_admin_group
 -- ----------------------------
-INSERT INTO `lee_admin_group` VALUES (1, '超级管理员', 1, '1,2,3,4,5,14,6,7,8,9,10,11,12,13,15,16,26,27,28,29,70,17,18,19,20,21,22,23,24,25,31,34,35,36,37,38,39,40,32,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,71,72,73,93,94,95,87,88,89,90,91,92,96,97,98,99,100,101,102,103,104,105,106,107,140,141,142,74,75,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,76,77,78,79,80,81,83,82,84,85,86', '', 1590565054, 0);
+INSERT INTO `lee_admin_group` VALUES (1, '超级管理员', 1, '1,2,3,4,5,14,6,7,8,9,10,11,12,13,15,16,26,27,28,29,55,17,18,19,20,21,22,23,24,25,31,34,35,36,37,38,39,40,32,41,42,43,44,45,46,47,48,49,50,51,52,53,54,56,57,156,157', '', 1590565054, 1608882439);
 
 -- ----------------------------
 -- Table structure for lee_admin_rule
@@ -83,7 +83,7 @@ CREATE TABLE `lee_admin_rule`  (
   `update_time` int(11) DEFAULT NULL COMMENT '0',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `name`(`src`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 156 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限节点' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 158 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限节点' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lee_admin_rule
@@ -143,6 +143,8 @@ INSERT INTO `lee_admin_rule` VALUES (54, 48, 'system.content/deletecontent', '�
 INSERT INTO `lee_admin_rule` VALUES (55, 1, 'system.AdminUserAction/index', '操作日志', 1, '', 'fa fa-book', 0, 0, 0);
 INSERT INTO `lee_admin_rule` VALUES (56, 0, '', '微信管理', 1, '', 'fa fa-weixin', 0, 0, NULL);
 INSERT INTO `lee_admin_rule` VALUES (57, 56, 'system.user/index', '用户管理', 1, '', '', 0, 0, NULL);
+INSERT INTO `lee_admin_rule` VALUES (156, 0, 'system.index/index', '首页', 0, '', '', 0, 0, NULL);
+INSERT INTO `lee_admin_rule` VALUES (157, 0, 'system.index/getadminmenulist', 'system.index/getadminmenulist', 0, '', '', 0, 0, NULL);
 
 -- ----------------------------
 -- Table structure for lee_admin_user_action
@@ -157,7 +159,7 @@ CREATE TABLE `lee_admin_user_action`  (
   `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '操作URL',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `uid`(`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 226 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户操作日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 359 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户操作日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lee_admin_user_action
@@ -387,6 +389,139 @@ INSERT INTO `lee_admin_user_action` VALUES (222, 1, 'Admin', 1591845426, '{\"pag
 INSERT INTO `lee_admin_user_action` VALUES (223, 1, 'Admin', 1591845433, '{\"id\":\"1\"}', 'system.Group/edit');
 INSERT INTO `lee_admin_user_action` VALUES (224, 1, 'Admin', 1591845434, '[]', 'system.Index/getrulelist');
 INSERT INTO `lee_admin_user_action` VALUES (225, 1, 'Admin', 1591845447, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (226, 1, 'Admin', 1608879297, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (227, 1, 'Admin', 1608879299, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (228, 1, 'Admin', 1608879814, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (229, 1, 'Admin', 1608880099, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (230, 1, 'Admin', 1608880388, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (231, 1, 'Admin', 1608880388, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (232, 1, 'Admin', 1608880394, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (233, 1, 'Admin', 1608880639, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (234, 1, 'Admin', 1608880639, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (235, 1, 'Admin', 1608880694, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (236, 1, 'Admin', 1608880694, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (237, 1, 'Admin', 1608880701, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (238, 1, 'Admin', 1608881025, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (239, 1, 'Admin', 1608881193, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (240, 1, 'Admin', 1608881195, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (241, 1, 'Admin', 1608881200, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (242, 1, 'Admin', 1608881242, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (243, 1, 'Admin', 1608881242, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (244, 1, 'Admin', 1608881242, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (245, 1, 'Admin', 1608881254, '[]', 'system.User/index');
+INSERT INTO `lee_admin_user_action` VALUES (246, 1, 'Admin', 1608881254, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.User/index');
+INSERT INTO `lee_admin_user_action` VALUES (247, 1, 'Admin', 1608881269, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (248, 1, 'Admin', 1608881269, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (249, 1, 'Admin', 1608881272, '{\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (250, 1, 'Admin', 1608881279, '{\"password\":\"111111\",\"password_confirm\":\"111111\",\"nickname\":\"test\",\"file\":\"\",\"thumb\":\"\\/storage\\/topic\\/20200610\\\\cfefb2d076cea3c11cb0a30ae8b779de.jpg\",\"group_id\":[\"1\"],\"desc\":\"\",\"status\":\"1\",\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (251, 1, 'Admin', 1608881280, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (252, 2, 'test', 1608881302, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (253, 2, 'test', 1608881359, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (254, 2, 'test', 1608881362, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (255, 2, 'test', 1608881363, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (256, 1, 'Admin', 1608881466, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (257, 1, 'Admin', 1608881468, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (258, 1, 'Admin', 1608881468, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (259, 1, 'Admin', 1608881468, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (260, 2, 'test', 1608881490, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (261, 2, 'test', 1608881597, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (262, 2, 'test', 1608881599, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (263, 1, 'Admin', 1608881657, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (264, 1, 'Admin', 1608881658, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (265, 1, 'Admin', 1608881658, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (266, 1, 'Admin', 1608881659, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (267, 1, 'Admin', 1608881663, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (268, 1, 'Admin', 1608881663, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (269, 1, 'Admin', 1608881665, '{\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (270, 1, 'Admin', 1608881669, '{\"password\":\"\",\"password_confirm\":\"\",\"nickname\":\"test\",\"file\":\"\",\"thumb\":\"\\/storage\\/topic\\/20200610\\\\cfefb2d076cea3c11cb0a30ae8b779de.jpg\",\"group_id\":[\"1\"],\"desc\":\"\",\"status\":\"1\",\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (271, 1, 'Admin', 1608881671, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (272, 2, 'test', 1608881782, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (273, 1, 'Admin', 1608882143, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (274, 1, 'Admin', 1608882145, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (275, 1, 'Admin', 1608882145, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (276, 1, 'Admin', 1608882145, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (277, 1, 'Admin', 1608882150, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (278, 1, 'Admin', 1608882150, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (279, 1, 'Admin', 1608882152, '[]', 'system.Menu/add');
+INSERT INTO `lee_admin_user_action` VALUES (280, 1, 'Admin', 1608882165, '{\"pid\":\"0\",\"title\":\"\\u9996\\u9875\",\"src\":\"system.index\\/index\",\"icon\":\"\"}', 'system.Menu/add');
+INSERT INTO `lee_admin_user_action` VALUES (281, 1, 'Admin', 1608882167, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (282, 1, 'Admin', 1608882167, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (283, 1, 'Admin', 1608882172, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (284, 1, 'Admin', 1608882172, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (285, 1, 'Admin', 1608882173, '[]', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (286, 1, 'Admin', 1608882173, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (287, 1, 'Admin', 1608882174, '{\"id\":\"1\"}', 'system.Group/edit');
+INSERT INTO `lee_admin_user_action` VALUES (288, 1, 'Admin', 1608882174, '[]', 'system.Index/getrulelist');
+INSERT INTO `lee_admin_user_action` VALUES (289, 1, 'Admin', 1608882177, '{\"title\":\"\\u8d85\\u7ea7\\u7ba1\\u7406\\u5458\",\"layuiTreeCheck_1\":\"1\",\"layuiTreeCheck_2\":\"2\",\"layuiTreeCheck_3\":\"3\",\"layuiTreeCheck_4\":\"4\",\"layuiTreeCheck_5\":\"5\",\"layuiTreeCheck_14\":\"14\",\"layuiTreeCheck_6\":\"6\",\"layuiTreeCheck_7\":\"7\",\"layuiTreeCheck_8\":\"8\",\"layuiTreeCheck_9\":\"9\",\"layuiTreeCheck_10\":\"10\",\"layuiTreeCheck_11\":\"11\",\"layuiTreeCheck_12\":\"12\",\"layuiTreeCheck_13\":\"13\",\"layuiTreeCheck_15\":\"15\",\"layuiTreeCheck_16\":\"16\",\"layuiTreeCheck_26\":\"26\",\"layuiTreeCheck_27\":\"27\",\"layuiTreeCheck_28\":\"28\",\"layuiTreeCheck_29\":\"29\",\"layuiTreeCheck_55\":\"55\",\"layuiTreeCheck_17\":\"17\",\"layuiTreeCheck_18\":\"18\",\"layuiTreeCheck_19\":\"19\",\"layuiTreeCheck_20\":\"20\",\"layuiTreeCheck_21\":\"21\",\"layuiTreeCheck_22\":\"22\",\"layuiTreeCheck_23\":\"23\",\"layuiTreeCheck_24\":\"24\",\"layuiTreeCheck_25\":\"25\",\"layuiTreeCheck_31\":\"31\",\"layuiTreeCheck_34\":\"34\",\"layuiTreeCheck_35\":\"35\",\"layuiTreeCheck_36\":\"36\",\"layuiTreeCheck_37\":\"37\",\"layuiTreeCheck_38\":\"38\",\"layuiTreeCheck_39\":\"39\",\"layuiTreeCheck_40\":\"40\",\"layuiTreeCheck_32\":\"32\",\"layuiTreeCheck_41\":\"41\",\"layuiTreeCheck_42\":\"42\",\"layuiTreeCheck_43\":\"43\",\"layuiTreeCheck_44\":\"44\",\"layuiTreeCheck_45\":\"45\",\"layuiTreeCheck_46\":\"46\",\"layuiTreeCheck_47\":\"47\",\"layuiTreeCheck_48\":\"48\",\"layuiTreeCheck_49\":\"49\",\"layuiTreeCheck_50\":\"50\",\"layuiTreeCheck_51\":\"51\",\"layuiTreeCheck_52\":\"52\",\"layuiTreeCheck_53\":\"53\",\"layuiTreeCheck_54\":\"54\",\"layuiTreeCheck_56\":\"56\",\"layuiTreeCheck_57\":\"57\",\"layuiTreeCheck_156\":\"156\",\"desc\":\"\",\"status\":\"1\",\"id\":\"1\",\"rules\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"14\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",\"15\",\"16\",\"26\",\"27\",\"28\",\"29\",\"55\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"31\",\"34\",\"35\",\"36\",\"37\",\"38\",\"39\",\"40\",\"32\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"50\",\"51\",\"52\",\"53\",\"54\",\"56\",\"57\",\"156\"]}', 'system.Group/edit');
+INSERT INTO `lee_admin_user_action` VALUES (290, 1, 'Admin', 1608882179, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (291, 2, 'test', 1608882199, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (292, 2, 'test', 1608882201, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (293, 2, 'test', 1608882209, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (294, 2, 'test', 1608882220, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (295, 2, 'test', 1608882222, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (296, 2, 'test', 1608882222, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (297, 1, 'Admin', 1608882233, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (298, 1, 'Admin', 1608882235, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (299, 1, 'Admin', 1608882235, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (300, 1, 'Admin', 1608882235, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (301, 1, 'Admin', 1608882242, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (302, 1, 'Admin', 1608882243, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (303, 1, 'Admin', 1608882244, '{\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (304, 1, 'Admin', 1608882248, '{\"password\":\"\",\"password_confirm\":\"\",\"nickname\":\"test\",\"file\":\"\",\"thumb\":\"\\/storage\\/topic\\/20200610\\\\cfefb2d076cea3c11cb0a30ae8b779de.jpg\",\"group_id\":[\"1\"],\"desc\":\"\",\"status\":\"1\",\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (305, 1, 'Admin', 1608882249, '[]', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (306, 1, 'Admin', 1608882249, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (307, 1, 'Admin', 1608882249, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (308, 1, 'Admin', 1608882250, '{\"id\":\"1\"}', 'system.Group/edit');
+INSERT INTO `lee_admin_user_action` VALUES (309, 1, 'Admin', 1608882251, '[]', 'system.Index/getrulelist');
+INSERT INTO `lee_admin_user_action` VALUES (310, 1, 'Admin', 1608882256, '[]', 'system.Conf/index');
+INSERT INTO `lee_admin_user_action` VALUES (311, 1, 'Admin', 1608882256, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (312, 1, 'Admin', 1608882256, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (313, 1, 'Admin', 1608882264, '{\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (314, 2, 'test', 1608882282, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (315, 2, 'test', 1608882283, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (316, 1, 'Admin', 1608882368, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (317, 1, 'Admin', 1608882369, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (318, 1, 'Admin', 1608882369, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (319, 1, 'Admin', 1608882369, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (320, 1, 'Admin', 1608882375, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (321, 1, 'Admin', 1608882375, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (322, 1, 'Admin', 1608882376, '[]', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (323, 1, 'Admin', 1608882376, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (324, 1, 'Admin', 1608882376, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (325, 1, 'Admin', 1608882376, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (326, 1, 'Admin', 1608882379, '[]', 'system.Menu/add');
+INSERT INTO `lee_admin_user_action` VALUES (327, 1, 'Admin', 1608882387, '{\"pid\":\"0\",\"title\":\"system.index\\/getadminmenulist\",\"src\":\"system.index\\/getadminmenulist\",\"icon\":\"\"}', 'system.Menu/add');
+INSERT INTO `lee_admin_user_action` VALUES (328, 1, 'Admin', 1608882389, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (329, 1, 'Admin', 1608882389, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (330, 2, 'test', 1608882403, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (331, 2, 'test', 1608882404, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (332, 2, 'test', 1608882413, '[]', 'system.Publicer/adminlogin');
+INSERT INTO `lee_admin_user_action` VALUES (333, 2, 'test', 1608882413, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (334, 1, 'Admin', 1608882423, '{\"username\":\"admin\",\"password\":\"123456\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (335, 1, 'Admin', 1608882424, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (336, 1, 'Admin', 1608882424, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (337, 1, 'Admin', 1608882424, '[]', 'system.Index/console');
+INSERT INTO `lee_admin_user_action` VALUES (338, 1, 'Admin', 1608882428, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (339, 1, 'Admin', 1608882428, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (340, 1, 'Admin', 1608882430, '[]', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (341, 1, 'Admin', 1608882431, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Admin/index');
+INSERT INTO `lee_admin_user_action` VALUES (342, 1, 'Admin', 1608882433, '{\"id\":\"2\"}', 'system.Admin/edit');
+INSERT INTO `lee_admin_user_action` VALUES (343, 1, 'Admin', 1608882435, '[]', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (344, 1, 'Admin', 1608882435, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (345, 1, 'Admin', 1608882437, '{\"id\":\"1\"}', 'system.Group/edit');
+INSERT INTO `lee_admin_user_action` VALUES (346, 1, 'Admin', 1608882437, '[]', 'system.Index/getrulelist');
+INSERT INTO `lee_admin_user_action` VALUES (347, 1, 'Admin', 1608882439, '{\"title\":\"\\u8d85\\u7ea7\\u7ba1\\u7406\\u5458\",\"layuiTreeCheck_1\":\"1\",\"layuiTreeCheck_2\":\"2\",\"layuiTreeCheck_3\":\"3\",\"layuiTreeCheck_4\":\"4\",\"layuiTreeCheck_5\":\"5\",\"layuiTreeCheck_14\":\"14\",\"layuiTreeCheck_6\":\"6\",\"layuiTreeCheck_7\":\"7\",\"layuiTreeCheck_8\":\"8\",\"layuiTreeCheck_9\":\"9\",\"layuiTreeCheck_10\":\"10\",\"layuiTreeCheck_11\":\"11\",\"layuiTreeCheck_12\":\"12\",\"layuiTreeCheck_13\":\"13\",\"layuiTreeCheck_15\":\"15\",\"layuiTreeCheck_16\":\"16\",\"layuiTreeCheck_26\":\"26\",\"layuiTreeCheck_27\":\"27\",\"layuiTreeCheck_28\":\"28\",\"layuiTreeCheck_29\":\"29\",\"layuiTreeCheck_55\":\"55\",\"layuiTreeCheck_17\":\"17\",\"layuiTreeCheck_18\":\"18\",\"layuiTreeCheck_19\":\"19\",\"layuiTreeCheck_20\":\"20\",\"layuiTreeCheck_21\":\"21\",\"layuiTreeCheck_22\":\"22\",\"layuiTreeCheck_23\":\"23\",\"layuiTreeCheck_24\":\"24\",\"layuiTreeCheck_25\":\"25\",\"layuiTreeCheck_31\":\"31\",\"layuiTreeCheck_34\":\"34\",\"layuiTreeCheck_35\":\"35\",\"layuiTreeCheck_36\":\"36\",\"layuiTreeCheck_37\":\"37\",\"layuiTreeCheck_38\":\"38\",\"layuiTreeCheck_39\":\"39\",\"layuiTreeCheck_40\":\"40\",\"layuiTreeCheck_32\":\"32\",\"layuiTreeCheck_41\":\"41\",\"layuiTreeCheck_42\":\"42\",\"layuiTreeCheck_43\":\"43\",\"layuiTreeCheck_44\":\"44\",\"layuiTreeCheck_45\":\"45\",\"layuiTreeCheck_46\":\"46\",\"layuiTreeCheck_47\":\"47\",\"layuiTreeCheck_48\":\"48\",\"layuiTreeCheck_49\":\"49\",\"layuiTreeCheck_50\":\"50\",\"layuiTreeCheck_51\":\"51\",\"layuiTreeCheck_52\":\"52\",\"layuiTreeCheck_53\":\"53\",\"layuiTreeCheck_54\":\"54\",\"layuiTreeCheck_56\":\"56\",\"layuiTreeCheck_57\":\"57\",\"layuiTreeCheck_156\":\"156\",\"layuiTreeCheck_157\":\"157\",\"desc\":\"\",\"status\":\"1\",\"id\":\"1\",\"rules\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"14\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",\"15\",\"16\",\"26\",\"27\",\"28\",\"29\",\"55\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\",\"24\",\"25\",\"31\",\"34\",\"35\",\"36\",\"37\",\"38\",\"39\",\"40\",\"32\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\",\"49\",\"50\",\"51\",\"52\",\"53\",\"54\",\"56\",\"57\",\"156\",\"157\"]}', 'system.Group/edit');
+INSERT INTO `lee_admin_user_action` VALUES (348, 1, 'Admin', 1608882441, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Group/index');
+INSERT INTO `lee_admin_user_action` VALUES (349, 2, 'test', 1608882455, '{\"username\":\"test\",\"password\":\"111111\"}', 'system.Publicer/adminloginsubmit');
+INSERT INTO `lee_admin_user_action` VALUES (350, 2, 'test', 1608882456, '[]', 'system.Index/index');
+INSERT INTO `lee_admin_user_action` VALUES (351, 2, 'test', 1608882457, '[]', 'system.Index/getadminmenulist');
+INSERT INTO `lee_admin_user_action` VALUES (352, 2, 'test', 1608882465, '[]', 'system.Route/index');
+INSERT INTO `lee_admin_user_action` VALUES (353, 2, 'test', 1608882465, '{\"page\":\"1\",\"limit\":\"15\"}', 'system.Route/index');
+INSERT INTO `lee_admin_user_action` VALUES (354, 2, 'test', 1608882465, '[]', 'system.Conf/index');
+INSERT INTO `lee_admin_user_action` VALUES (355, 2, 'test', 1608882466, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (356, 2, 'test', 1608882466, '[]', 'system.Menu/index');
+INSERT INTO `lee_admin_user_action` VALUES (357, 2, 'test', 1608882475, '[]', 'system.Nav/index');
+INSERT INTO `lee_admin_user_action` VALUES (358, 2, 'test', 1608882475, '{\"page\":\"1\",\"limit\":\"10\"}', 'system.Nav/index');
 
 -- ----------------------------
 -- Table structure for lee_cate
